@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Financeira</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="text-center mb-5 fw-bold text-primary">
+      <i class="fa-solid fa-chart-pie me-2"></i>Dashboard Financeira
+    </h2>
+
+    <!-- Cards totais -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-3">
+        <div class="card dashboard-card text-center">
+          <div class="card-header">
+            <i class="fa-solid fa-bullseye me-2"></i>Meta
+          </div>
+          <div class="card-body">
+            <h4 class="fw-bold text-primary">R$ 5.000,00</h4>
+            <p class="text-muted">Meta financeira definida</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card dashboard-card text-center">
+          <div class="card-header">
+            <i class="fa-solid fa-coins me-2"></i>Total Lucros
+          </div>
+          <div class="card-body">
+            <h4 class="fw-bold text-success">R$ 2.150,00</h4>
+            <p class="text-muted">Lucros acumulados</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card dashboard-card text-center">
+          <div class="card-header">
+            <i class="fa-solid fa-wallet me-2"></i>Total Despesas
+          </div>
+          <div class="card-body">
+            <h4 class="fw-bold text-danger">R$ 1.050,00</h4>
+            <p class="text-muted">Despesas acumuladas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Novo Card Restante -->
+      <div class="col-md-3">
+        <div class="card dashboard-card text-center">
+          <div class="card-header">
+            <i class="fa-solid fa-balance-scale me-2"></i>Restante
+          </div>
+          <div class="card-body">
+            <h4 class="fw-bold text-info">R$ 1.100,00</h4>
+            <p class="text-muted">Saldo disponível</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulário -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fa-solid fa-plus me-2"></i>Adicionar Registro
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-3">
+              <label class="form-label">Tipo</label>
+              <select class="form-select">
+                <option value="lucro">Lucro</option>
+                <option value="despesa">Despesa</option>
+              </select>
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Motivo</label>
+              <input type="text" class="form-control" placeholder="Ex: Venda, Aluguel, Energia...">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Valor</label>
+              <input type="number" step="0.01" class="form-control" placeholder="Digite o valor">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-custom mt-3 w-100">
+            <i class="fa-solid fa-save me-2"></i>Salvar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tabela -->
+    <div class="card">
+      <div class="card-header">
+        <i class="fa-solid fa-table me-2"></i>Registros
+      </div>
+      <div class="card-body">
+        <table class="table table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Tipo</th>
+              <th scope="col">Motivo</th>
+              <th scope="col">Dia</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge bg-success">Lucro</span></td>
+              <td>Venda de produto</td>
+              <td>07/05/2026</td>
+              <td class="fw-bold text-success">R$ 1.200,00</td>
+            </tr>
+            <tr>
+              <td><span class="badge bg-danger">Despesa</span></td>
+              <td>Energia</td>
+              <td>07/05/2026</td>
+              <td class="fw-bold text-danger">R$ 250,00</td>
+            </tr>
+            <tr>
+              <td><span class="badge bg-success">Lucro</span></td>
+              <td>Serviço prestado</td>
+              <td>06/05/2026</td>
+              <td class="fw-bold text-success">R$ 950,00</td>
+            </tr>
+            <tr>
+              <td><span class="badge bg-danger">Despesa</span></td>
+              <td>Aluguel</td>
+              <td>06/05/2026</td>
+              <td class="fw-bold text-danger">R$ 800,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Meta</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="text-center mb-4 text-primary fw-bold">Definir Meta Financeira</h2>
+
+    <form method="POST" action="#" class="card form-card mx-auto" style="max-width: 500px;">
+      <div class="card-header">
+        <i class="fa-solid fa-bullseye me-2"></i>Meta
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="valorMeta" class="form-label">Valor da Meta</label>
+          <input type="number" step="0.01" class="form-control" id="valorMeta" name="valor_meta" required>
+        </div>
+        <button type="submit" class="btn btn-custom w-100">
+          <i class="fa-solid fa-save me-2"></i>Salvar Meta
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
