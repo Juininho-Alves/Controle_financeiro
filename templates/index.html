@@ -36,7 +36,7 @@
             <i class="fa-solid fa-coins me-2"></i>Total Lucros
           </div>
           <div class="card-body">
-            <h4 class="fw-bold text-success">R$ {{lucro}}</h4>
+            <h4 class="fw-bold text-success">R$ {{total_lucro}}</h4>
             <p class="text-muted">Lucros acumulados</p>
           </div>
         </div>
@@ -74,22 +74,26 @@
         <i class="fa-solid fa-plus me-2"></i>Adicionar Registro
       </div>
       <div class="card-body">
-        <form>
+        <form method="POST">
           <div class="row g-3">
             <div class="col-md-3">
               <label class="form-label">Tipo</label>
-              <select class="form-select">
+              <select class="form-select" name="tipo_movimentacoes">
+                <option disabled selected >Selecione a movimentação</option>
                 <option value="lucro">Lucro</option>
                 <option value="despesa">Despesa</option>
               </select>
+              {% if msg %}
+                  <p class="badge bg-danger mt-4">{{msg}}</p>
+              {% endif %}
             </div>
             <div class="col-md-5">
               <label class="form-label">Motivo</label>
-              <input type="text" class="form-control" placeholder="Ex: Venda, Aluguel, Energia...">
+              <input type="text" name="motivo" class="form-control" placeholder="Ex: Venda, Aluguel, Energia...">
             </div>
             <div class="col-md-4">
               <label class="form-label">Valor</label>
-              <input type="number" step="0.01" class="form-control" placeholder="Digite o valor">
+              <input type="number" name="valor" step="0.01" class="form-control" placeholder="Digite o valor">
             </div>
           </div>
           <button type="submit" class="btn btn-custom mt-3 w-100">
@@ -115,30 +119,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><span class="badge bg-success">Lucro</span></td>
-              <td>Venda de produto</td>
-              <td>07/05/2026</td>
-              <td class="fw-bold text-success">R$ 1.200,00</td>
-            </tr>
-            <tr>
-              <td><span class="badge bg-danger">Despesa</span></td>
-              <td>Energia</td>
-              <td>07/05/2026</td>
-              <td class="fw-bold text-danger">R$ 250,00</td>
-            </tr>
-            <tr>
-              <td><span class="badge bg-success">Lucro</span></td>
-              <td>Serviço prestado</td>
-              <td>06/05/2026</td>
-              <td class="fw-bold text-success">R$ 950,00</td>
-            </tr>
-            <tr>
-              <td><span class="badge bg-danger">Despesa</span></td>
-              <td>Aluguel</td>
-              <td>06/05/2026</td>
-              <td class="fw-bold text-danger">R$ 800,00</td>
-            </tr>
+            {% for i in dados %}
+
+              <tr>
+                <td>
+                    <span class="badge 
+                        {% if i[1] == 'lucro' %}
+                            text-bg-success
+                        {% else %}
+                            text-bg-danger
+                        {% endif %}">
+                        
+                        {{ i[1] }}
+                    </span>
+                </td>
+
+                <td>{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+                <td>{{i[4]}}</td>
+              </tr>
+            {% endfor %}
+            
           </tbody>
         </table>
       </div>
